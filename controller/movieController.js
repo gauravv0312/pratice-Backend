@@ -49,7 +49,7 @@ exports.deleteSongByTitle = BigPromise(async(req,res,next)=>{
 
     res.status(200).send(name);
 });
-
+// one to one relation between movie-> audio
 exports.getAllDataByname = BigPromise(async(req,res,next)=>{
     const {MovieName} = req.params;
     const movies =await Movie.find({MovieName});
