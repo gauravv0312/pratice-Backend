@@ -53,9 +53,8 @@ exports.deleteSongByTitle = BigPromise(async(req,res,next)=>{
 exports.getAllDataByname = BigPromise(async(req,res,next)=>{
     const {MovieName} = req.params;
     const movies =await Movie.find({MovieName});
-    const title = movies[0]['Songs'][0]['songname'];
-    console.log(title);
-    // console.log(songId);
-    const result  =await Audio.find({title});
+    const movie =movies[0].MovieName;
+    console.log(movie);
+    const result  =await Audio.find({movie});
     res.status(200).send(result);
 });
