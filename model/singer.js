@@ -8,12 +8,6 @@ const singerSchema = mongoose.Schema({
           songName:{
             type:String,
             unique:true,
-          },
-          movieName:{
-            type:String,
-          },
-          duration:{
-            type:String,
           }
         }
     ]

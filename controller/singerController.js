@@ -1,6 +1,7 @@
 const Singer = require('../model/singer');
 const BigPromise =require('../common/Promise');
 const CustomerError = require('../utils/customError');
+const Audio = require('../model/audio');
 
 exports.createSinger = BigPromise(async(req,res,next)=>{
     try {
@@ -61,4 +62,14 @@ exports.deleteSingerByName = BigPromise(async(req,res,next)=>{
         console.log(error);
      }
 
+});
+// implementation of one to one relation between singer and songs
+exports.getAllDataByname = BigPromise(async(req,res,next)=>{
+    const {name} = req.params;
+    const singer =await Singer.find({name});
+    const singerName = singer[0].name;
+    console.log(singerName);
+    // console.log(songId);
+    const result  =await Audio.find({singerName});
+    res.status(200).send(result);
 });
